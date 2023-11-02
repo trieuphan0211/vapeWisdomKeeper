@@ -1,0 +1,29 @@
+:root {
+  --gray: #a9a9a9;
+  --primary-1: #fecda6;
+  --primary-2: #ff9130;
+  --primary-3: #ff5b22;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif !important;
+}
+body {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  background-color: #fff;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+p {
+  padding: 0;
+  margin: 0;
+}

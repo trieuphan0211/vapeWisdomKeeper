@@ -14,7 +14,7 @@ const Routers = () => {
           element: <HomePage />,
         },
         {
-          path: `${context}/fanpage`,
+          path: `${context}/blog`,
           element: <FanPage />,
         },
         {
