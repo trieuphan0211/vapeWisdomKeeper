@@ -11,9 +11,19 @@ import goal3 from "../assets/img/SDG-3.svg";
 import goal11 from "../assets/img/SDG-11.svg";
 
 import Box from "@mui/material/Box";
-import { Button, Grid } from "@mui/material";
+import { Button, FormControl, FormLabel, Grid, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import styled from "@emotion/styled";
 
+const FormLabelCustom = styled(FormLabel)({
+  marginBottom: "10px",
+  fontSize: "16px",
+  fontWeight: "bold",
+});
+const TextFieldCustom = styled(TextField)({
+  fontSize: "16px",
+  marginBottom: "20px",
+});
 export const HomePage = () => {
   const navigate = useNavigate();
   return (
@@ -141,6 +151,72 @@ export const HomePage = () => {
             </div>
           </Grid>
         </Grid>
+      </Box>
+      <Box className="homepage_video d-flex align-items-center justify-content-center">
+        <Box className="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/rGVwbiETMGg?rel=0"
+            title="YouTube video"
+            allowFullScreen
+          ></iframe>
+        </Box>
+      </Box>
+      <Box className="homepage_contact">
+        <h3 className="homepage_contact-header">contact us</h3>
+        <FormControl className="homepage_contact-form">
+          <FormLabelCustom className="homepage_contact-form-label">
+            Name
+          </FormLabelCustom>
+          <TextFieldCustom
+            id="outlined-basic"
+            label="Name"
+            variant="outlined"
+          />
+          <FormLabelCustom className="homepage_contact-form-label">
+            Email
+          </FormLabelCustom>
+          <TextFieldCustom
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+          />
+          <FormLabelCustom className="homepage_contact-form-label">
+            Subject
+          </FormLabelCustom>
+          <TextFieldCustom
+            id="outlined-basic"
+            label="Subject"
+            variant="outlined"
+          />
+          <FormLabelCustom className="homepage_contact-form-label">
+            Description
+          </FormLabelCustom>
+          <TextFieldCustom
+            id="outlined-basic"
+            label="Description"
+            variant="outlined"
+            rows={4}
+            multiline
+          />
+          <Button
+            sx={{
+              textTransform: "uppercase",
+              padding: "10px 50px",
+              width: "50%",
+              margin: "0 auto",
+              fontSize: "20px",
+              backgroundColor: "var(--primary-2)",
+              letterSpacing: "5px",
+              "&:hover": {
+                backgroundColor: "var(--primary-3)",
+              },
+            }}
+            variant="contained"
+            disabled
+          >
+            Send
+          </Button>
+        </FormControl>
       </Box>
     </Box>
   );
