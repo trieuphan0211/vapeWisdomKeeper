@@ -14,7 +14,7 @@ export const Header = () => {
     <Box className="header d-flex align-items-center justify-content-between">
       <Link className="header_logo d-flex">
         <img className="" src={logo} alt="Logo" />
-        <p>The Vapes Wiskdom Keeper</p>
+        <p>The Vapes Wisdom Keeper</p>
       </Link>
       <List className="header_menu d-flex">
         <Link className="header_menu-item" to={`${context}`}>

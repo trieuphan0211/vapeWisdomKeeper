@@ -30,7 +30,7 @@ export const HomePage = () => {
     <Box className="homepage">
       <Box className="homepage_banner d-flex justify-content-center align-items-center">
         <Box className="homepage_banner-content">
-          <h1>THE VAPE WISKDOM KEEPER</h1>
+          <h1>THE VAPE WISDOM KEEPER</h1>
           <p>
             "The Vape Wisdom Keeper" is an organization committed to educating
             the public about the potential health risks and drawbacks associated
