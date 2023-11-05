@@ -22,13 +22,14 @@
       animation: roundIcon 5s infinite;
     }
   }
-  &_info {
+  &_info, &_disavantages {
     padding: 50px;
     &-header {
       font-size: 3.6em;
       font-weight: 700;
       color: var(--primary-3);
       letter-spacing: 2px;
+      text-align: center;
       span {
         color: var(--primary-1);
       }
@@ -62,6 +63,7 @@
             font-size: 3em;
             font-weight: 600;
             letter-spacing: 2px;
+            text-align: center;
           }
           p {
             font-size: 1.6em;
@@ -80,11 +82,12 @@
       font-size: 3.6em;
       font-weight: 700;
       text-transform: uppercase;
-      max-width: 370px;
+      max-width: 1000px;
+      text-align: center;
       line-height: 70px;
       color: #009edb;
       letter-spacing: 2px;
-      margin-right: 40px;
+      margin-bottom: 40px;
     }
     &-body {
       position: relative;

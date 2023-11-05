@@ -1,1 +1,53 @@
-.header{height:90px;padding:10px 50px;box-shadow:2px 2px 10px rgba(0,0,0,.1)}.header_logo{text-decoration:none}.header_logo img{height:45px;margin-right:10px}.header_logo p{font-size:24px;letter-spacing:2px;color:#000;line-height:45px;font-weight:700}.header_menu-item{text-decoration:none;color:#000;padding:10px 30px}.header_menu-item .MuiTypography-root{font-size:16px;font-weight:600}.header_menu-item:hover{color:var(--primary-2)}.footer{background-color:var(--primary-1)}.footer_sociaty{padding:30px;display:flex;justify-content:center}.footer_sociaty-item{margin:0 10px}.footer_sociaty-item img{width:40px}.footer_copyright{display:flex;justify-content:center;font-size:16px;font-weight:600;padding:10px 30px}/*# sourceMappingURL=Layout.css.map */
+.header {
+  height: 90px;
+  padding: 10px 50px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.header_logo {
+  text-decoration: none;
+}
+.header_logo img {
+  height: 45px;
+  margin-right: 10px;
+}
+.header_logo p {
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: #000;
+  line-height: 45px;
+  font-weight: 700;
+}
+.header_menu-item {
+  text-decoration: none;
+  color: #000;
+  padding: 10px 30px;
+}
+.header_menu-item .MuiTypography-root {
+  font-size: 16px;
+  font-weight: 600;
+}
+.header_menu-item:hover {
+  color: var(--primary-2);
+}
+
+.footer {
+  background-color: var(--primary-1);
+}
+.footer_sociaty {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+.footer_sociaty-item {
+  margin: 0 10px;
+}
+.footer_sociaty-item img {
+  width: 40px;
+}
+.footer_copyright {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 30px;
+}/*# sourceMappingURL=Layout.css.map */

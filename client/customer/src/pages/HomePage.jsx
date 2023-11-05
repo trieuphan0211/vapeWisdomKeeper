@@ -9,6 +9,11 @@ import mouthpiece from "../assets/img/mouthpiece.png";
 import goals from "../assets/img/17goals.png";
 import goal3 from "../assets/img/SDG-3.svg";
 import goal11 from "../assets/img/SDG-11.svg";
+import nicotine from "../assets/img/nicotine.png";
+import lung_cancer from "../assets/img/lung-cancer.png";
+import heart_disease from "../assets/img/heart-disease.png";
+import clue from "../assets/img/clue.png";
+import gateway_smoke from "../assets/img/break.png";
 
 import Box from "@mui/material/Box";
 import { Button, FormControl, FormLabel, Grid, TextField } from "@mui/material";
@@ -59,7 +64,7 @@ export const HomePage = () => {
         </Box>
         <img className="homepage_banner-img" src={noVape} alt="" />
       </Box>
-      <Box className="homepage_goals d-flex align-items-center justify-content-center">
+      <Box className="homepage_goals d-flex flex-column align-items-center justify-content-center">
         <h1>According to 2 of 17 Sustainable Development Goals</h1>
         <Box className="homepage_goals-body">
           <img className="homepage_goals-body-background" src={goals} alt="" />
@@ -147,6 +152,71 @@ export const HomePage = () => {
               <p>
                 The user inhales the aerosol through a mouthpiece, which is
                 often designed to resemble the tip of a traditional cigarette.
+              </p>
+            </div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box className="homepage_disavantages">
+        <h3 className="homepage_disavantages-header">
+          Health effects of<span> Electronic Cigratte</span>
+        </h3>
+        <Grid
+          className="homepage_disavantages-components"
+          container
+          rowSpacing={1}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        >
+          <Grid item xs={6}>
+            <div>
+              <img src={nicotine} alt="" />
+              <h5>Nicotine Addiction</h5>
+              <p>
+                E-cigarettes contain nicotine, an addictive substance that can
+                lead to dependence and make quitting difficult.
+              </p>
+            </div>
+          </Grid>
+          <Grid item xs={6}>
+            <div>
+              <img src={lung_cancer} alt="" />
+              <h5>Respiratory and Lung Health</h5>
+              <p>
+                Vaping can cause respiratory issues and potentially lead to
+                serious lung conditions, such as vaping-associated lung
+                illnesses (VALI).
+              </p>
+            </div>
+          </Grid>
+          <Grid item xs={4}>
+            <div>
+              <img src={heart_disease} alt="" />
+              <h5>Cardiovascular Risks</h5>
+              <p>
+                Nicotine in e-cigarettes can increase heart rate and blood
+                pressure, raising the risk of heart problems and cardiovascular
+                diseases.
+              </p>
+            </div>
+          </Grid>
+          <Grid item xs={4}>
+            <div>
+              <img src={clue} alt="" />
+              <h5>Unknown Long-Term Effects</h5>
+              <p>
+                The long-term health consequences of e-cigarette use are not
+                fully understood, and more research is needed to assess the
+                risks over time.
+              </p>
+            </div>
+          </Grid>
+          <Grid item xs={4}>
+            <div>
+              <img src={gateway_smoke} alt="" />
+              <h5>Gateway to Smoking</h5>
+              <p>
+                Some evidence suggests that e-cigarettes may serve as a gateway
+                to traditional cigarette smoking, especially among young people.
               </p>
             </div>
           </Grid>
