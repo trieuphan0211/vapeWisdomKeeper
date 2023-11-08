@@ -20,16 +20,10 @@ export const Header = () => {
         <Link className="header_menu-item" to={`${context}`}>
           <ListItemText primary="Home" />
         </Link>
-        <Link
-          className="header_menu-item"
-          // to={`${context}/project-team`}
-        >
+        <Link className="header_menu-item" to={`${context}/project-team`}>
           <ListItemText primary="Project" />
         </Link>
-        <Link
-          className="header_menu-item"
-          //  to={`${context}/blog`}
-        >
+        <Link className="header_menu-item" to={`${context}/blog`}>
           <ListItemText primary="Blog" />
         </Link>
       </List>

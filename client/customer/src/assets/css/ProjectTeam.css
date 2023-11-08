@@ -1,0 +1,9 @@
+.container {
+    width: 990px;
+    margin: 0px auto;
+}
+
+.banner .banertext {
+    position: absolute;
+    top: 80%;
+}
