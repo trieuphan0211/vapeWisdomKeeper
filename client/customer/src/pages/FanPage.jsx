@@ -35,10 +35,11 @@ export const FanPage = () => {
           >
             <img className="fanPage_item-img" src={item.full_picture}></img>
             <p className="fanPage_item-mes">
-              {selectedFeed?.message?.split("\n").map((item, index) => {
+              {item.message.split("\n").map((item, index) => {
+                console.log(item);
                 return (
                   <>
-                    <p key={index}>{item}</p>
+                    {item}
                     <br />
                   </>
                 );
@@ -57,7 +58,7 @@ export const FanPage = () => {
         }}
       >
         <Box
-          classes="fanPage_item-modal"
+          className="fanPage_item-modal"
           sx={{
             position: "absolute",
             top: "50%",
@@ -70,6 +71,10 @@ export const FanPage = () => {
             p: 4,
             height: "90%",
             overflowY: "scroll",
+            padding: "10px",
+            "&:focus-visible": {
+              outline: "none",
+            },
           }}
         >
           <img
@@ -80,7 +85,7 @@ export const FanPage = () => {
             {selectedFeed?.message?.split("\n").map((item, index) => {
               return (
                 <>
-                  <p key={index}>{item}</p>
+                  {item}
                   <br />
                 </>
               );
