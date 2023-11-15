@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "../assets/css/Layout.css";
+import "../assets/scss/Layout.scss";
 import logo from "../assets/img/Logo.png";
 
 import Box from "@mui/material/Box";

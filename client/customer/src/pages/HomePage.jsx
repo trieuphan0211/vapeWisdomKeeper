@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/HomePage.css";
+import "../assets/scss/HomePage.scss";
 import noVape from "../assets/img/no-smoke.png";
 import batteryVape from "../assets/img/battery_vape.png";
 import e_liquid from "../assets/img/e-liquid.png";

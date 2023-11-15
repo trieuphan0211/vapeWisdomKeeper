@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../assets/css/FanPage.css";
+import "../assets/scss/FanPage.scss";
 import { getFeed } from "../services";
 
 import Box from "@mui/material/Box";
@@ -34,7 +34,16 @@ export const FanPage = () => {
             onClick={() => handleOpen(item)}
           >
             <img className="fanPage_item-img" src={item.full_picture}></img>
-            <p className="fanPage_item-mes">{item.message}</p>
+            <p className="fanPage_item-mes">
+              {selectedFeed?.message?.split("\n").map((item, index) => {
+                return (
+                  <>
+                    <p key={index}>{item}</p>
+                    <br />
+                  </>
+                );
+              })}
+            </p>
           </div>
         );
       })}
@@ -64,11 +73,18 @@ export const FanPage = () => {
           }}
         >
           <img
-            className="fanPage_item-img"
+            className="fanPage_item-img fanPage_item-imgs"
             src={selectedFeed?.full_picture}
           ></img>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {selectedFeed?.message}
+            {selectedFeed?.message?.split("\n").map((item, index) => {
+              return (
+                <>
+                  <p key={index}>{item}</p>
+                  <br />
+                </>
+              );
+            })}
           </Typography>
         </Box>
       </Modal>

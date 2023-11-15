@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import "../assets/css/Layout.css";
+import "../assets/scss/Layout.scss";
 import facebook from "../assets/img/facebook.png";
 import instagram from "../assets/img/instagram.png";
 import threads from "../assets/img/threads.png";

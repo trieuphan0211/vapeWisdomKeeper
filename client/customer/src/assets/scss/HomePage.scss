@@ -22,16 +22,17 @@
       animation: roundIcon 5s infinite;
     }
   }
-  &_info, &_disavantages {
+  &_info,
+  &_disavantages {
     padding: 50px;
     &-header {
       font-size: 3.6em;
       font-weight: 700;
-      color: var(--primary-3);
       letter-spacing: 2px;
       text-align: center;
+      color: var(--primary-1);
       span {
-        color: var(--primary-1);
+        color: var(--primary-3);
       }
     }
     &-content {
