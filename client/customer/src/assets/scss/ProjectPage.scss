@@ -1,0 +1,128 @@
+.project {
+  * {
+    font-family: "Agbalumo", sans-serif !important;
+  }
+  &_background {
+    &-img {
+      width: 100%;
+      height: 50vh;
+    }
+    &-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ccc;
+      font-size: 3rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 2px;
+      line-height: 60px;
+      text-align: center;
+      > span {
+        color: rgb(33, 221, 158);
+      }
+    }
+  }
+  &_intro {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 100px;
+    &-header {
+      font-size: 4em;
+      font-weight: 700;
+      color: var(--primary-3);
+      margin-bottom: 20px;
+    }
+    &-p {
+      font-size: 2em;
+      line-height: 1.4;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: var(--primary-2);
+      margin-bottom: 20px;
+      max-width: 1000px;
+      > span {
+        color: #009edb;
+        font-style: italic;
+        font-weight: 600;
+      }
+    }
+  }
+  &_goals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-title {
+      width: 50%;
+    }
+    &-comp {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      &-item {
+        width: 200px;
+        margin: 10px;
+        &:hover {
+          scale: 1.1;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+  &_detail {
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 100px;
+    &-subIntro {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 2em;
+      font-weight: 500;
+      font-style: italic;
+      text-align: center;
+      letter-spacing: 2px;
+      letter-spacing: 1px;
+      color: var(--primary-2);
+    }
+    &-header {
+      letter-spacing: 2px;
+      font-size: 4em;
+      font-weight: 700;
+      color: var(--primary-3);
+      margin-bottom: 20px;
+      margin: 20px 0;
+    }
+    &-intro {
+      padding: 0 100px;
+      &-header {
+        font-size: 3em;
+        font-weight: 600;
+        color: var(--primary-3);
+        margin-bottom: 20px;
+        text-decoration: dashed underline var(--primary-2);
+      }
+      &-p {
+        font-size: 2em;
+        line-height: 1.4;
+        font-weight: 400;
+        color: #ffa761;
+        margin-bottom: 20px;
+        > span {
+          color: var(--primary-2);
+          font-weight: 600;
+        }
+        > li {
+          padding: 10px 0;
+        }
+        > a {
+        }
+      }
+    }
+  }
+}
