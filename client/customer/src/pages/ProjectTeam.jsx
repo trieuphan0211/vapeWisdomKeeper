@@ -43,9 +43,10 @@ export const ProjectTeam = () => {
   return (
     <Box className="project">
       <Box className="project_background">
-        <p className="project_background-title">
-          <span> DỰ ÁN PHỤC VỤ CỘNG ĐỒNG </span> - KỸ NĂNG CÔNG DÂN TOÀN CẦU
-        </p>
+        <Box className="project_background-title">
+          <p>DỰ ÁN PHỤC VỤ CỘNG ĐỒNG</p>
+          <p>KỸ NĂNG CÔNG DÂN TOÀN CẦU</p>
+        </Box>
       </Box>
       <Box className="project_intro">
         <h1 className="project_intro-header">Lời mở đầu</h1>
