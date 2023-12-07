@@ -1,7 +1,6 @@
 import React from "react";
 import "../assets/scss/ProjectPage.scss";
 import { Box } from "@mui/material";
-import background from "../assets/img/project/background.png";
 import title from "../assets/img/project/title.png";
 import goal1 from "../assets/img/SDG-1.svg";
 import goal2 from "../assets/img/SDG-2.svg";
@@ -44,11 +43,6 @@ export const ProjectTeam = () => {
   return (
     <Box className="project">
       <Box className="project_background">
-        <img
-          className="project_background-img"
-          src={background}
-          alt="background"
-        />
         <p className="project_background-title">
           <span> DỰ ÁN PHỤC VỤ CỘNG ĐỒNG </span> - KỸ NĂNG CÔNG DÂN TOÀN CẦU
         </p>

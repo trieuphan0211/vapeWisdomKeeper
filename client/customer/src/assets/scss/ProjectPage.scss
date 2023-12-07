@@ -2,21 +2,24 @@
   * {
   }
   &_background {
-    &-img {
-      width: 100%;
-    }
+    height: 800px;
+    overflow: hidden;
+    background-image: url("../img/project/background.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    position: relative;
     &-title {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ccc;
-      font-size: 3rem;
+      bottom: 250px;
+      color: var(--primary-2);
+      font-size: 4rem;
       font-weight: 700;
       font-style: italic;
       letter-spacing: 2px;
-      line-height: 60px;
+      line-height: 80px;
       text-align: center;
+      text-shadow: 1px 1px 3px #ccc;
       > span {
         color: rgb(33, 221, 158);
       }
@@ -90,6 +93,7 @@
     &-header {
       letter-spacing: 2px;
       font-size: 4em;
+      text-align: center;
       font-weight: 700;
       color: var(--primary-3);
       margin-bottom: 20px;
