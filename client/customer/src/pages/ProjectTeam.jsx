@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/scss/ProjectPage.scss";
 import { Box } from "@mui/material";
-import background from "../assets/img/project/background.jpg";
+import background from "../assets/img/project/background.png";
 import title from "../assets/img/project/title.png";
 import goal1 from "../assets/img/SDG-1.svg";
 import goal2 from "../assets/img/SDG-2.svg";
@@ -207,11 +207,6 @@ export const ProjectTeam = () => {
           </p>
         </Box>
         <h1 className="project_detail-header">KẾ HOẠCH VÀ BÁO CÁI DỰ ÁN</h1>
-        <ol>
-          <li>
-            <h4></h4>
-          </li>
-        </ol>
       </Box>
     </Box>
   );

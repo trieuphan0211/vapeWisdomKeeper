@@ -8,6 +8,7 @@ import cartridge from "../assets/img/cartridge.png";
 import mouthpiece from "../assets/img/mouthpiece.png";
 import goals from "../assets/img/17goals.png";
 import goal3 from "../assets/img/SDG-3.svg";
+import goal4 from "../assets/img/SDG-4.svg";
 import goal11 from "../assets/img/SDG-11.svg";
 import nicotine from "../assets/img/nicotine.png";
 import lung_cancer from "../assets/img/lung-cancer.png";
@@ -74,6 +75,13 @@ export const HomePage = () => {
             rel="noopener noreferrer"
           >
             <img className="homepage_goals-body-3" src={goal3} alt="" />
+          </a>
+          <a
+            href="https://vietnam.un.org/en/sdgs/4"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img className="homepage_goals-body-4" src={goal4} alt="" />
           </a>
           <a
             href="https://vietnam.un.org/en/sdgs/11"
