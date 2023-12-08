@@ -1,4 +1,5 @@
 .project {
+  margin-top: 90px;
   * {
   }
   &_background {
@@ -125,6 +126,13 @@
         > a {
         }
       }
+    }
+  }
+  &_video {
+    .ratio.ratio-16x9 {
+      border-radius: 30px;
+      max-width: 1000px;
+      overflow: hidden;
     }
   }
 }

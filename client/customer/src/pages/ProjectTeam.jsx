@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../assets/scss/ProjectPage.scss";
 import { Box } from "@mui/material";
 import title from "../assets/img/project/title.png";
@@ -19,6 +19,7 @@ import goal14 from "../assets/img/SDG-14.svg";
 import goal15 from "../assets/img/SDG-15.svg";
 import goal16 from "../assets/img/SDG-16.svg";
 import goal17 from "../assets/img/SDG-17.svg";
+import Modal from "@mui/material/Modal";
 
 export const ProjectTeam = () => {
   const goals = [
@@ -40,6 +41,12 @@ export const ProjectTeam = () => {
     goal16,
     goal17,
   ];
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  useEffect(() => {
+    handleOpen();
+  }, []);
   return (
     <Box className="project">
       <Box className="project_background">
@@ -203,6 +210,21 @@ export const ProjectTeam = () => {
         </Box>
         <h1 className="project_detail-header">KẾ HOẠCH VÀ BÁO CÁI DỰ ÁN</h1>
       </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="project_video d-flex align-items-center justify-content-center"
+      >
+        <Box className="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/plt3LtDCS7k?rel=0"
+            title="YouTube video"
+            allowFullScreen
+          ></iframe>
+        </Box>
+      </Modal>
     </Box>
   );
 };
