@@ -60,6 +60,7 @@ export const HomePage = () => {
                 color: "#000",
               },
             }}
+            onClick={() => navigate("/project-team")}
           >
             Learn more
           </Button>
@@ -67,7 +68,7 @@ export const HomePage = () => {
         <img className="homepage_banner-img" src={noVape} alt="" />
       </Box>
       <Box className="homepage_goals d-flex flex-column align-items-center justify-content-center">
-        <h1>According to 2 of 17 Sustainable Development Goals</h1>
+        <h1>According to 3 of 17 Sustainable Development Goals</h1>
         <Box className="homepage_goals-body">
           <img className="homepage_goals-body-background" src={goals} alt="" />
           <a
