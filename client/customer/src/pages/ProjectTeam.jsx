@@ -22,6 +22,7 @@ import goal17 from "../assets/img/SDG-17.svg";
 import Modal from "@mui/material/Modal";
 
 export const ProjectTeam = () => {
+  document.title = "Project | The Wisdom Vape";
   const goals = [
     goal1,
     goal2,

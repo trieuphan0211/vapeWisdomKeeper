@@ -31,6 +31,7 @@ const TextFieldCustom = styled(TextField)({
   marginBottom: "20px",
 });
 export const HomePage = () => {
+  document.title = "Home | The Wisdom Vape";
   const navigate = useNavigate();
   return (
     <Box className="homepage">

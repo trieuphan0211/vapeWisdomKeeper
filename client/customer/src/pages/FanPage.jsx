@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 export const FanPage = () => {
+  document.title = "Blog | The Wisdom Vape";
   const [feed, setFeed] = useState([]);
   const dataFeed = async () => {
     const res = await getFeed();
