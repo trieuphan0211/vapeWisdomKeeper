@@ -94,38 +94,83 @@
     }
     &-header {
       letter-spacing: 2px;
-      font-size: 4em;
+      font-size: 6em;
       text-align: center;
       font-weight: 700;
       color: var(--primary-3);
       margin-bottom: 20px;
       margin: 20px 0;
     }
-    &-intro {
-      padding: 0 100px;
-      &-header {
-        font-size: 3em;
-        font-weight: 600;
-        color: var(--primary-3);
-        margin-bottom: 20px;
-        text-decoration: dashed underline var(--primary-2);
+    &-subheader {
+      font-size: 3em;
+      font-weight: 600;
+      font-style: italic;
+      text-align: center;
+      letter-spacing: 2px;
+      letter-spacing: 1px;
+      color: var(--primary-2);
+      margin-top: 20px;
+    }
+    .react-slideshow-container {
+      width: 99vw;
+    }
+    &-slider {
+      width: 100%;
+      .each-slide-effect {
+        .slider_item {
+          padding: 10px 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          img {
+            width: 100%;
+          }
+          h6 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+          }
+          p {
+            font-size: 2em;
+            font-weight: 500;
+            margin-top: 10px;
+          }
+        }
       }
-      &-p {
-        font-size: 2em;
-        line-height: 1.4;
-        font-weight: 400;
-        color: #000;
-        margin-bottom: 20px;
-        > span {
-          color: var(--primary-2);
-          font-weight: 600;
-        }
-        > li {
-          padding: 10px 0;
-        }
-        > a {
-        }
-      }
+    }
+  }
+  &_chapter {
+    padding: 0 100px;
+    &-h1 {
+      font-weight: 700;
+      margin: 30px 10px;
+      color: var(--primary-2);
+    }
+    &-h2 {
+      color: rgba($color: #ff9130, $alpha: 0.8);
+      font-weight: 600;
+      margin: 20px 0;
+      margin-left: 20px;
+    }
+    &-h3,
+    &-h4,
+    &-h5 {
+      color: rgba($color: #ff9130, $alpha: 0.8);
+      font-weight: 500;
+      margin: 10px 0;
+      margin-left: 30px;
+      font-style: italic;
+    }
+    &-p {
+      font-size: 2em;
+      margin: 0 0 5px 40px;
+      line-height: 1.4;
+      text-align: justify;
+    }
+    &-img {
+      display: block;
+      width: 50%;
+      margin: 0 auto;
     }
   }
   &_video {
