@@ -141,6 +141,9 @@
   }
   &_chapter {
     padding: 0 100px;
+    ul {
+      list-style: none;
+    }
     &-h1 {
       font-weight: 700;
       margin: 30px 10px;
@@ -163,9 +166,16 @@
     }
     &-p {
       font-size: 2em;
-      margin: 0 0 5px 40px;
+      margin: 0 0 5px 50px;
       line-height: 1.4;
       text-align: justify;
+      span {
+        font-weight: 700;
+      }
+      &-italic {
+        font-style: italic;
+        font-weight: 300;
+      }
     }
     &-img {
       display: block;

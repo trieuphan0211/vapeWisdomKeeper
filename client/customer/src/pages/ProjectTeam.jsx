@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "../assets/scss/ProjectPage.scss";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { Box, duration } from "@mui/material";
+import { Box, duration, Step, StepLabel, Typography } from "@mui/material";
 import title from "../assets/img/project/title.png";
 import goal1 from "../assets/img/SDG-1.svg";
 import goal2 from "../assets/img/SDG-2.svg";
@@ -31,12 +31,198 @@ import member_dat from "../assets/img/members/Dat.png";
 import member_nhat from "../assets/img/members/Nhat.png";
 import member_tai from "../assets/img/members/Tai.png";
 import vape_structure from "../assets/img/project/vape_structure.png";
+import picture1 from "../assets/img/project/Picture1.png";
 import picture2 from "../assets/img/project/Picture2.png";
 import picture3 from "../assets/img/project/Picture3.png";
 import picture4 from "../assets/img/project/Picture4.jpg";
+import banner from "../assets/img/project/banner.png";
+import fanpage from "../assets/img/project/fanpage.png";
+import form from "../assets/img/project/form.png";
+import website from "../assets/img/project/website.png";
 
 import Modal from "@mui/material/Modal";
-
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+const mission = [
+  {
+    time: "Tuần 3 /n (18/09/2023 – 24/09/2023)",
+    goals:
+      "- Xác định rõ chủ đề và mục tiêu dự án hướng./n- Chia các nhóm nhỏ.",
+    workList:
+      "- Nhóm họp bàn, sau đó xác định chủ đề và mục tiêu của dự án./n- Chia 8 thành viên nhóm ra 4 ban nhỏ để dễ hoạt động.",
+    responsibility: "Cả nhóm",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 4 & 5/n(25/09/2023 – 8/10/2023)",
+    goals: "- Lên timeline./n- Lên kế hoạch chi tiết.",
+    workList:
+      "- Mỗi nhóm (các nhóm đã được đề cập ở mục 6.1) sẽ lên kế hoạch hoạt chi tiết hoạt động của sản phẩm của mỗi nhóm./n- Lên timeline cụ thể của nội dung cộng việc./n- Leader team và các nhóm trưởng họp bàn và cho ra bản kế hoạch cuối cùng sau khi tham mưu với thầy Phương – giảng viên môn học.",
+    responsibility: "Cả nhóm",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 6/n(09/10/2023 – 15/10/2023)",
+    goals:
+      "- Team Fanpage: tạo fanpage./n- Team Web: thiết kế giao diện cho trang web./n- Team Design: hỗ trợ hình ảnh./n- Team Hậu cần: hỗ trợ các team.",
+    workList:
+      "- Team Fanpage: tạo fanpage, giới thiệu và nêu lý do của fanpage/n- Team Web: thiết kế ra giao diện chính của website./n- Team Design: thiết kế hình ảnh cho team fanpage đăng bài./n- Team Hậu cần: hỗ trợ các team.",
+    responsibility: "Hoạt động theo team",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 7/n(16/10/2023 – 22/10/2023)",
+    goals:
+      "- Team Fanpage: đăng bài nói về “thực trạng việc sử dụng thuốc lá điện tử”. /n- Team Web: tiếp tục thiết kế giao diện trang web. /n- Team Design: hỗ trợ hình ảnh. /n- Team Hậu cần: hỗ trợ các team",
+    workList:
+      "- Team Fanpage: tìm kiếm nội dung thực trang về việc sử dụng thuốc lá điện tử. /n- Team Web: nghe feedback từ thành viên nhóm và chỉnh sửa cho phù hợp. /n- Team Design: /n+ Hỗ trợ hình ảnh cho team fanpage. /n+ Lên nội dung video báo cáo. /n- Team Hậu cần: hỗ trợ các team.",
+    responsibility: "Hoạt động theo team",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 8/n(23/10/2023 – 29/10/2023)",
+    goals:
+      "- Team Fanpage: đăng bài khảo sát “mức độ nhận biết về thuốc lá điện tử”/n- Team Web: tạo trang home của website./n- Team Design: /n+ Hỗ trợ hình ảnh./n+ Hoàn thiện nội dung video báo cáo./n- Team Hậu cần:/n+ Lên nội dung và dự trù kinh phí buổi workshop./n+ Hỗ trợ các team.",
+    workList:
+      "- Team Fanpage: /n+ Tạo form/n+ Đăng bài khảo sát/n+ Kêu gọi các bạn sinh viên thực hiện khảo sát./n- Team Web: thiết kế trang home website. /n- Team Design:/n+ Thiết kế hình ảnh cho website./n+ Hoàn thiện nội dung video báo cáo sau khi cả nhóm feedback./n- Team Hậu cần:/n+ Lên nội dung, dự trù kinh phí và các công tác chuẩn bị cho buổi workshop./n+ Hỗ trợ các team.",
+    responsibility: "Hoạt động theo team",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 9/n(30/10/2023 – 5/11/2023)",
+    goals:
+      "- Team Fanpage: đăng bài nguyên nhân sử dụng thuốc lá điện tử./n- Team Web: hoàn thiện trang home./n- Team Design:/n+ Quay và chụp quá trình học tập trên lớp./n+ Hỗ trợ hình ảnh./n- Team Hậu cần:/n+ Hoàn thiện nội dung và dự trù buổi workshop./n+ Hỗ trợ các team.",
+    workList:
+      "- Team Fanpage:/n+ Tìm nội dung “nguyên nhân thuốc lá điện tử dần được sử dụng phổ biến”/n+ Đăng bài./n- Team Web: hoàn thiện trang home./n- Team Design:/n+ Quay và chụp lại quá trình học tập trên lớp./n+ Hỗ trợ hình ảnh team fanpage./n- Team Hậu cần:/n+ Hoàn thiện nội dung và dự trù buổi workshop sau khi nghe feedback./n+ Hỗ trợ các team.",
+    responsibility: "Hoạt động theo team",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 10/n(06/11/2023 – 12/11/2023)",
+    goals:
+      "- Team Fanpage: Đăng thông báo buổi workshop./n- Team Web: Thiết kế trang project và trang blog./n- Team Design:/n+ Quay và chụp quá trình học tập trên lớp./n- Team Hậu cần:/n+ Chuẩn bị các công tác cho buổi workshop.",
+    workList:
+      "- Team Fanpage: /n+ Tạo form đăng ký workshop./n+ Đăng bài truyền thông buổi workshop./n- Team Web: thiết kế trang project và blog./n- Team Design:/n+ Quay và chụp lại quá trình học tập trên lớp./n+ Thiết kế standee cho buổi workshop./n- Team Hậu cần:/n+ Mua bánh kẹo./n+ Đặt quà cho diễn giả./n+ Mời diễn giả./n+ In ấn giấy tờ./n+ Mời photo ngoài./n+ Đề xuất mượn phòng tổ chức workshop.",
+    responsibility: "Hoạt động theo team",
+    cost: "- Bánh kẹo: 235k./n- Quà cho diễn giả: 95k./n- In ấn: 125k/n- Photo ngoài: 100k/n=> Tổng: 555k",
+  },
+  {
+    time: "Tuần 11 /n (13/11/2023 – 19/11/2023)",
+    goals:
+      "- Team Fanpage: Đăng bài cảm ơn đến diễn giả và các bạn sinh viên đã tham dự workshop./n- Team Web: hoàn thiện trang project và trang blog./n- Team Design: edit video báo cáo./n- Team Hậu cần: chuẩn bị buổi workshop./n- Diễn ra workshop.",
+    workList:
+      "- Team Fanpage: Đăng bài cảm ơn sau buổi workshop./n- Team Web: hoàn thiện trang project và trang blog./n- Team Design: edit video báo cáo sau khi workshop hoàn thành./n- Team Hậu cần: chuẩn bị các công tác tổ chức workshop./n- Cả nhóm ưu tiên tập trung triển khai và hoàn thành buổi workshop.",
+    responsibility: "Hoạt động theo team",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 12 & 13/n(20/11/2023 – 03/12/2023)",
+    goals:
+      "- Hoàn thiện các sản phẩm./n- Thống kê báo cáo kết quả./n- Edit powerpoint./n- Hoàn thành file “báo cáo dự án”.",
+    workList:
+      "- Leader đốc thúc các team hoàn thành sản phẩm của mỗi nhóm./n- Mỗi nhóm thống kê báo cáo những gì nhóm đã làm và chưa làm được./n- Edit powerpoint: Giang./n- File báo cáo: Lead nhóm và các nhóm trưởng",
+    responsibility: "Cả nhóm",
+    cost: "Không có",
+  },
+  {
+    time: "Tuần 14/n(04/12/2023 – 10/12/2023)",
+    goals: "Chuẩn bị cho buổi báo cáo",
+    workList: "Hoàn thiện các nội dung",
+    responsibility: "Cả nhóm",
+    cost: "Không có",
+  },
+];
+const members = [
+  {
+    mssv: "2174802010807",
+    fullname: "Vũ Hoàng Giang",
+    responsibility: "- Lead team/n- Nhóm trưởng team hậu cần",
+    working:
+      "- Lên kế hoạch và timeline dự án./n- Tạo cuộc họp báo cáo nhóm mỗi tuần./n- Đốc thúc các nhóm thực hiện sản phẩm./n- Lên kế hoạch buổi workshop./n- Thống kê báo cáo dự án./n- Hỗ trợ edit video báo cáo.",
+    note: "",
+  },
+  {
+    mssv: "2173402010758",
+    fullname: "Lê Hoàng Phương Trinh",
+    responsibility: "Thành viên team hậu cần",
+    working:
+      "- Hỗ trợ các nhóm trong quá trình làm dự án./n- Hỗ trợ lên kế hoạch workshop.",
+    note: "",
+  },
+  {
+    mssv: "2173201081416",
+    fullname: "Huỳnh Thị Quỳnh Hương",
+    responsibility: "Nhóm trưởng team fanpage",
+    working:
+      "- Lên kế hoạch hoạt động của fanpage./n- Viết nội dung cho các bài post./n- Thống kê báo cáo team fanpage.",
+    note: "",
+  },
+  {
+    mssv: "2174802010380",
+    fullname: "Lê Hồng Phong",
+    responsibility: "- Thư ký nhóm/n- Thành viên team fanpage",
+    working:
+      "- Hỗ trợ quản lý fanpage./n- Tìm kiếm thông tin, nội dung đăng bài./n- Ghi lại những nội dung quan trọng trong các cuộc họp và trong giờ học.",
+    note: "",
+  },
+  {
+    mssv: "207CT28659",
+    fullname: "Phan Ngọc Triệu",
+    responsibility: "Nhóm trưởng team web",
+    working:
+      "- Lên ý tưởng cho website./n- Thiết kế giao diện website./n- Code 3 trang con: Home, Project, Blog./n- Thống kê báo cáo team web",
+    note: "",
+  },
+  {
+    mssv: "2174802010469",
+    fullname: "Nguyễn Tấn Đạt",
+    responsibility: "Thành viên team website",
+    working:
+      "- Hỗ trợ thiết kế giao diện website./n- Hỗ trợ code trang project.",
+    note: "",
+  },
+  {
+    mssv: "2174802010877",
+    fullname: "Nguyễn Quốc Nhật",
+    responsibility: "Thành viên team design",
+    working: "- Quay và chụp quá trình học và làm dự án/n- Edit video báo cáo.",
+    note: "",
+  },
+  {
+    mssv: "2174802010740",
+    fullname: "Nguyễn Tuấn Tài",
+    responsibility: "Thành viên team design",
+    working: "- Edit hình ảnh cho team fanpage./n- Thiết kế standee workshop.",
+    note: "",
+  },
+];
+const skills = [
+  {
+    name: "Kỹ năng lên kế hoạch",
+    detail:
+      "- Lập, phát triển kế hoạch dự án nhóm:/n+ Tính toán thời gian để hoàn thiện dự án: lên timeline chi tiết cho từng nội dung, chi tiết nhỏ của dự án./n+ Căn chỉnh các mục tiêu phù hợp: đặt ra mục tiêu cho dự án và số lượn sinh viên hưởng ứng.",
+  },
+  {
+    name: "Kỹ năng quan sát, phân tích, chọn lọc vấn đề",
+    detail:
+      "- Quan sát, phân tích vấn đề, đưa ra lựa chọn cho dự án: từ việc quan sát môi trường xung quanh và khả năng phân tích vấn dề, nhóm nhận thấy vấn nạn “thuốc lá điện tử” đang gia tăng đáng sợ khi các bạn sinh viên sử dụng thuốc lá và thuốc lá điện tử quá nhiều./n- Quan sát và chọn lóc nội dung tỉ mỉ đăng lên fanpage.",
+  },
+  {
+    name: "Kỹ năng giao tiếp",
+    detail:
+      "- Giao tiếp bằng ngôn ngữ viết: tạo form khảo sát, đặt câu hỏi, form đăng kí workshop, viết caption cho fanpage, thư mời cho diễn giả và sinh viên tham dự.",
+  },
+  {
+    name: "Kỹ năng làm việc nhóm",
+    detail:
+      "- Hỗ trợ nhau kịp thời trong giai đoạn các thành viên trong nhóm đều đang học năm 3, năm 4: các bạn cố gắng hỗ trợ nhau và kết nối với nhau để hoàn thành sản phẩm./n- Các nội dung quan trọng của nhóm luôn được bỏ phiếu thông qua./n- Các thành viên luôn lắng nghe và góp ý trong mỗi cuộc họp.",
+  },
+];
 export const ProjectTeam = () => {
   document.title = "Project | The Wisdom Vape";
   const goals = [
@@ -99,7 +285,7 @@ export const ProjectTeam = () => {
           onedrive, MS Team, MS form...).
           <br />
           <br />
-          <br /> Dưới đây là{" "}
+          <br /> Dưới đây là
           <span> 17 mục tiêu phát triển bền vững của Liên hiệp quốc </span>
           đến năm 2030:
         </p>
@@ -140,7 +326,6 @@ export const ProjectTeam = () => {
                     color: "#f50057",
                   }}
                 >
-                  {" "}
                   Leader
                 </span>
               </h6>
@@ -266,7 +451,7 @@ export const ProjectTeam = () => {
           Trường Sư phạm, Đại học Vinh - cho rằng nguyên nhân học sinh hút thuốc
           lá điện tử và tiếp cận sớm với chất gây nghiện mới do tâm lý các em
           muốn thể hiện, khẳng định bản thân và thường bị bạn bè rủ rê, lôi kéo,
-          thậm chí ép buộc sử dụng thuốc lá điện tử. (theo báo{" "}
+          thậm chí ép buộc sử dụng thuốc lá điện tử. (theo báo
           <a
             href="https://tuoitre.vn/vi-sao-hoc-sinh-ngay-cang-me-hut-thuoc-la-dien-tu-20231015161604062.htm"
             target="_blank"
@@ -340,7 +525,7 @@ export const ProjectTeam = () => {
           tại không có thuốc điều trị đặc hiệu cho bệnh này.
         </p>
         <p className="project_chapter-p">
-          <span>Hội chứng tổn thương phổi cấp do thuốc lá điện tử</span>{" "}
+          <span>Hội chứng tổn thương phổi cấp do thuốc lá điện tử</span>
           (E-cig-arette Acute Lung Injury Syndrome – EVALI). Vitamin E acetate
           có trong thuốc lá điện tử được cho là nguyên nhân gây hội chứng này.
           Các triệu chứng thường gặp là khó thở, ho, đau ngực, sốt, ớn lạnh,
@@ -492,7 +677,981 @@ export const ProjectTeam = () => {
           bình quân đầu người. Như vậy, hút thuốc lá là một trong những nguyên
           nhân làm gia tăng nghèo đói.
         </p>
+        <h1 className="project_chapter-h1">CHƯƠNG II: KẾ HOẠCH DỰ ÁN</h1>
+        <h2 className="project_chapter-h2">I. Ý TƯỞNG DỰ ÁN</h2>
+        <ul>
+          <li>
+            <p className="project_chapter-p">
+              - Qua quá trình lên ý tưởng và kế hoạch cho dự án, nhóm TWS đã
+              chọn ra 3 mục tiêu trong 17 mục tiêu phát triển bền vững của Liên
+              Hợp Quốc để áp dụng vào Dự án “Ảnh hưởng của thuốc lá điện tử dối
+              với giới trẻ”:
+            </p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  + <span>Mục tiêu số 3:</span> Sức khỏe và có cuộc sống tốt.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  + <span>Mục tiêu số 4:</span> Giáo dục chất lượng.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  + <span>Mục tiêu só 11:</span> Các thành phố và cộng đồng bền
+                  vững.
+                </p>
+              </li>
+              <img
+                className="project_chapter-img"
+                src={picture1}
+                alt="17 mục tiêu phát triển bền vững của Liên Hợp Quốc"
+              />
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              - Dựa trên tình trạng “thuốc lá điện tử” đang được sử dụng ngày
+              càng nhiều trên thị trường Việt Nam nói chung và trên thế giới nói
+              riêng, cũng như tác hại của “thuốc lá điện tử” đối với sức khỏe
+              con người và môi trường tự nhiên:
+            </p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">+ Tại Mỹ: </p>
+                <ul>
+                  <li>
+                    <p className="project_chapter-p">
+                      - Từ năm 2009 đến 2015 xảy ra <span>92 vụ cháy/ nổ</span>
+                      do thuốc lá điện tử,
+                      <span>gây chấn thương ở 47 người</span> và
+                      <span>thiệt hại tài sản.</span>
+                    </p>
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">
+                      - <span>68 ca tử vong</span> và
+                      <span>2807 trường hợp bị tổn thương hô cấp cấp</span>
+                      (EVALI) phải nhập viện do sử dụng thuốc lá điện tử từ
+                      8/2019 đến 18/02/2020 (số liệu của Trung tâm kiểm soát
+                      bệnh tật Hoa Kỳ.)
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p className="project_chapter-p">+ Tại Anh: </p>
+                <ul>
+                  <li>
+                    <p className="project_chapter-p">
+                      -
+                      <span>
+                        Hơn 100 vụ cháy/ nổ, 2 trường hợp tử vong do cháy/ nổ
+                      </span>
+                      thuốc lá điện tử.
+                    </p>
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">
+                      -
+                      <span>
+                        4 ca tử vong có liên quan đến sử dụng thuốc lá điện tử
+                      </span>
+                      (ghi nhận bởi cơ quan Quản lý Thuốc).
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p className="project_chapter-p">+ Tại Việt Nam: </p>
+                <ul>
+                  <li>
+                    <p className="project_chapter-p">
+                      - Theo Điều tra năm 2019 của Tổ chức Y tế Thế giới (WHO),
+                      tỷ lệ sử dụng thuốc lá điện tử trong học sinh 15-17 tuổi
+                      tại Việt Nam là <span>2,6%</span>. Điều tra tình hình sử
+                      dụng trong học sinh năm 2022 cho thấy tỷ lệ sử dụng thuốc
+                      lá điện tử độ tuổi 13-15 là <span>3,5%</span>.
+                    </p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              - Từ những vấn đề trên, nhóm đã quyết định tổ chức triển khai dự
+              án tuyên truyền cho các bạn sinh viên tại trường đại học Văn Lang
+              nói chung và các bạn sinh viên trên khắp cả nước nói riêng về ảnh
+              hưởng của “thuốc lá điện tử” đối với sức khỏe, qua đó truyền tải
+              thông điệp “Quit smoking before smoking quits you – Hãy bỏ thuốc
+              lá trước khi nó bỏ bạn” và “Xây dựng một môi trường nói không với
+              khói thuốc”.
+            </p>
+          </li>
+        </ul>
+        <h2 className="project_chapter-h2">II. KHÁI QUÁT Ý TƯỞNG THỰC HIỆN</h2>
+        <div className="d-flex gap-4">
+          <ul>
+            <li>
+              <p className="project_chapter-p">
+                - <span>Tên dự án:</span> “
+                <span className="yellow">
+                  Ảnh hưởng của thuốc lá điện tử đối với giới trẻ
+                </span>
+                ”
+              </p>
+              <ul>
+                <li>
+                  <p className="project_chapter-p">
+                    + Ý nghĩa tên dự án: đánh giá tác động của việc sử dụng
+                    thuốc lá điện tử đến tình trạng sức khỏe và hành vi hút
+                    thuốc của giới trẻ. Dự án nhằm tăng cường hiểu biết về tác
+                    động của thuốc lá điện tử đối với lứa tuổi trẻ, từ đó đưa ra
+                    các biện pháp phòng ngừa và giảm thiểu tác động tiêu cực của
+                    việc sử dụng thuốc lá điện tử đối với sức khỏe và cộng đồng.
+                  </p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p className="project_chapter-p">
+                - <span>Slogan:</span> “Quit smoking before smoking quits you –
+                Hãy bỏ thuốc trước khi nó bỏ bạn”
+              </p>
+            </li>
+            <li>
+              <p className="project_chapter-p">
+                - <span>Ý tưởng thực hiện:</span> Trong quá trình thực hiện dự
+                án, nhóm đặt ra mục tiêu hoàn thành 4 sản phẩm mang tính tuyên
+                truyền và cập nhập kiến thức về thuốc lá điện tử và ảnh hưởng
+                của nó đến với đối tượng là các bạn sinh viên. 4 sản phẩm bao
+                gồm:
+              </p>
+              <ul>
+                <li>
+                  <p className="project_chapter-p">
+                    + <span>Fanpage facebook:</span> Do 3 thành viên nhóm tạo,
+                    quản lý và duy trì. Những nội dung được tìm hiểu kỹ và nhóm
+                    trưởng kiểm tra nội dung trước khi đăng lên fanpage.
+                  </p>
+                </li>
+                <li>
+                  <p className="project_chapter-p">
+                    + <span>Website:</span> website truyền thông do nhóm tự
+                    thiết kế dựa trên những kiến thức về chuyên ngành học của
+                    ngành học đang theo học.
+                  </p>
+                </li>
+                <li>
+                  <p className="project_chapter-p">
+                    +
+                    <span>
+                      Workshop “Thuốc lá điện tử ảnh hưởng đến giới trẻ”:
+                    </span>
+                    buổi workshop dành cho các bạn sinh viên trường đại học Văn
+                    Lang, nội dung của buổi workshop xoay quanh chủ đề về thực
+                    trạng, nguyên nhân và tác hại của thuốc lá điện tử. Trong đó
+                    phần tác hại của thuốc lá điện tử được chia sẻ từ những vị
+                    diễn giả khách mời trong lĩnh vực y tế, qua đó các bạn sinh
+                    viên biết thêm được về tính nguy hại của thuốc lá điện tử.
+                  </p>
+                </li>
+                <li>
+                  <p className="project_chapter-p">
+                    + <span>Video báo cáo:</span> video quay lại toàn bộ quá
+                    trình học tập học phần “kỹ năng công dân toàn cầu” và quá
+                    trình thực hiện dự án của nhóm.
+                  </p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p className="project_chapter-p">
+                {"=>"} Qua 4 sản phẩm trên, mục tiêu của nhóm hướng đến mang lại
+                những thông tin và nhận thức đúng đắn về “thuốc lá điện tử” và
+                ảnh hưởng của nó đến sức khỏe con người. Qua đó nâng cao nhận
+                thức của các bạn sinh viên và cùng nhau tạo ra một môi trường
+                sống lành mạnh “Nói không với thuốc lá và thuốc lá điện tử”.
+              </p>
+            </li>
+          </ul>
+          <img src={banner} alt="" />
+        </div>
+        <h2 className="project_chapter-h2">III. TÍNH CẤP THIẾT CỦA DỰ ÁN:</h2>
+        <h3 className="project_chapter-h3">1. Tính cấp thiết:</h3>
+        <p className="project_chapter-p">
+          - Năm 2015, tỷ lệ sử dụng thuốc lá điện tử ở 34 tỉnh, thành phố chỉ
+          khoảng 0,2% đến nay đã tăng 18 lần lên khoảng 3,6%. Các sản phẩm thuốc
+          lá mới được đưa vào Việt Nam chủ yếu qua đường nhập lậu, xách tay và
+          người tiêu dùng có thể dễ dàng mua bất hợp pháp các sản phẩm thuốc lá
+          mới trên internet, các trang mạng xã hội…
+        </p>
+        <p className="project_chapter-p">
+          - Theo Tổ chức Y tế Thế giới, sử dụng thuốc lá điện tử và thuốc lá
+          nung nóng đều có hại cho sức khỏe của cả người hút và người xung quanh
+          tương tự như thuốc lá thông thường. Các sản phẩm thuốc lá mới có chứa
+          nicotine là chất gây nghiện cao, độc hại, gây bệnh tim mạch, hô hấp,
+          tiêu hóa và ung thư.
+        </p>
+        <p className="project_chapter-p">
+          - Thành phần của dung dịch thuốc lá điện tử còn có glycerin, propylene
+          glycol và trên 15.500 loại hương liệu có nhiều chất độc (do đó rất khó
+          ngăn được nguy cơ các đối tượng sẽ trà trộn ma túy tổng hợp vào trong
+          thuốc lá điện tử). Propylene glycol có thể tạo thành propylene oxide,
+          một chất gây ung thư khi được đun nóng và hóa hơi. Glycerin khi được
+          đun nóng và hóa hơi tạo thành acrolein, gây kích ứng đường hô hấp
+          trên.
+        </p>
+        <h3 className="project_chapter-h3">2. Dữ liệu cụ thể:</h3>
+        <p className="project_chapter-p">
+          - Theo kết quả "Điều tra sức khỏe học sinh Việt Nam năm 2019" của Tổ
+          chức Y tế thế giới, tỷ lệ hiện đang hút thuốc lá điện tử trong học
+          sinh 13-17 tuổi trên phạm vi cả nước là 2,6%, (ở học sinh khu vực
+          thành thị là 3,4%).
+        </p>
+        <p className="project_chapter-p">
+          - Năm 2020, theo Điều tra tình hình sử dụng thuốc lá năm 2020 tại 34
+          tỉnh, thành phố của Việt Nam, tỷ lệ nam giới trưởng thành hiện đang sử
+          dụng thuốc lá điện tử là 5,6%, nữ giới trưởng thành sử dụng thuốc lá
+          điện tử là 1%.
+        </p>
+        <p className="project_chapter-p">
+          - Một nghiên cứu khác tại Hà Nội do Viện Chiến lược và Chính sách y tế
+          tiến hành năm 2020 cho thấy, tỷ lệ đang sử dụng thuốc lá điện tử ở học
+          sinh lớp 8-12 là 8,35% (nữ là 4,8%, nam là 12,39%), ở học sinh lớp
+          10-12 là 12,6%.
+        </p>
+        <p className="project_chapter-p">
+          - Tỷ lệ nữ giới hút thuốc lá điện tử cũng tăng cao hơn so với hút
+          thuốc lá điếu thông thường. Có tới 8% trẻ em gái và phụ nữ hút thuốc
+          lá điện tử (trong khi tỷ lệ hút thuốc lá điếu ở nữ là 1,2%).
+        </p>
+        <p className="project_chapter-p">
+          {"=>"} Nếu so sánh thô thì chỉ sau 5 năm, tỉ lệ hút thuốc lá điện tử ở
+          Việt Nam đã tăng 36,5 lần đối với cả hai giới, và tăng lần lượt trong
+          hai nhóm nam giới và nữ giới là 22,75 và 46 lần. Trong đó, tỷ lệ sử
+          dụng thuốc lá mới ở các thành phố có xu hướng tăng, nhất là đối tượng
+          học sinh, sinh viên, giới trẻ.
+        </p>
+        <p className="project_chapter-p project_chapter-p-italic">
+          (Trích trong “Tỷ lệ sử dụng thuốc lá điện tử gia tăng, chuyên gia
+          khuyến cáo gì về những nguy hại với sức khoẻ?” – Trung tâm y tế quận
+          Gò Vấp – TP.HCM, xem thêm chi tiết
+          <a href="https://trungtamytegovap.medinet.gov.vn/ban-tin-truyen-thong/ty-le-su-dung-thuoc-la-dien-tu-gia-tang-chuyen-gia-khuyen-cao-gi-ve-nhung-nguy-cmobile14393-76054.aspx">
+            tại đây.
+          </a>
+          )
+        </p>
+        <h2 className="project_chapter-h2">
+          IV. ĐỐI TƯỢNG THỤ HƯỞNG/ ĐỐI TƯỢNG TÁC ĐỘNG:
+        </h2>
+        <ul>
+          <li>
+            <p className="project_chapter-p">
+              - <span>Đối tượng trực tiếp hưởng lợi từ dự án:</span> Tập thể
+              nhóm thực hiện dự án – The Wisdom Vape team.
+            </p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  + Thông qua những bài giảng của TS. Trần Nhật Phương (giảng
+                  viên môn học) và giáo án do TTPTNLSV mang lại cho từng thành
+                  viên cho nhóm thêm những kỹ năng mới để trở thành một công dân
+                  toàn cầu. Qua đó từ cái nhìn và cảm nhận của từng cá nhân đóng
+                  góp vào cho dự án của nhóm, tạo nên những sản phẩm hướng đến
+                  mục tiêu cuối cùng của dự án.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              - <span> Đối tượng cần tác động của dự án:</span> Giới trẻ nói
+              chung và sinh viên trường đại học Văn Lang nói riêng.
+            </p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  + Từ việc truyền tải những nội dung và tác hại của “thuốc lá
+                  điện tử” đến gần hơn với các bạn trẻ hiện nay thông qua những
+                  sản phẩm của nhóm: fanpage, website, workshop để các bạn có
+                  thể “nhìn – ngẫm – thấu hiểu” vấn đề. Từ đó tác động đến nhận
+                  thức của các bạn, giúp các bạn nhìn nhận về sự nguy hại của
+                  “thuốc lá điện tử”, đồng thời cổ vũ các bạn sinh viên cùng
+                  chung tay tạo ra môi trường sống lành mạnh bằng cách từ bỏ
+                  thuốc lá và thuốc lá điện tử.
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h2 className="project_chapter-h2">V. MỤC TIÊU CỦA DỰ ÁN</h2>
+        <p className="project_chapter-p">- Dự án hướng đến những mục tiêu:</p>
+        <ul>
+          <li>
+            <p className="project_chapter-p">
+              + Truyền tải thông tin và tác hại của “thuốc lá điện tử” đến với
+              các bạn sinh viên thông qua fanpage, website, buổi workshop và
+              form khảo sát. Qua đó gửi tới thông điệp xây dựng một môi trường
+              sống lành mạnh và bảo vệ sức khỏe của mỗi người bằng cách “Nói
+              không với thuốc là và thuốc lá điện tử”.
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              + Dự kiến tiếp cận đến ít nhất 200 bạn sinh viên của trường đại
+              học Văn Lang và các trường đại học lân cận thuộc thành phố Hồ Chí
+              Minh.
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              + Tạo cơ hội cho các thành viên trong nhóm học tập, thực hành và
+              cải thiện những kỹ năng đang có và được học trong học phần “kỹ
+              năng công dân toàn cầu”.
+            </p>
+          </li>
+        </ul>
+        <h2 className="project_chapter-h2">VI. KẾ HOẠCH THỰC HIỆN</h2>
+        <h3 className="project_chapter-h3">
+          1. Tổng quan các nội dung chính cần thực hiện
+        </h3>
+        <ul>
+          <li>
+            <p className="project_chapter-p">
+              <span>- Bước 1</span>: Xác định rõ chủ đề và mục tiêu dự án hướng
+              tới là tuyên truyền “ảnh hưởng của thuốc lá điện tử đến với giới
+              trẻ”, chia các nhóm nhỏ để dễ dàng hoạt động và tạo cơ hội cho các
+              thành viên thực hành và thử sức:
+            </p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  + Team Fanpage: Tạo, quản lý, duy trì và tìm hiểu thông tin về
+                  nội dung đăng trên Fanpage.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  + Team Web: Tạo website của dự án.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  + Team Design: Thiết kế ảnh và video cho toàn bộ dự án.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  + Team hậu cần: Hỗ trợ các nhóm trên và lên kế hoạch cho buổi
+                  Workshop.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              <span>- Bước 2</span>: Phân chia công việc cho từng thành viên,
+              đối với mỗi nhóm sẽ có một Trưởng nhóm – phụ trách phân công công
+              việc và báo cáo kết quá hoạt động của nhóm.
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              <span>- Bước 3</span>: Lên timeline và kế hoạch chi tiết của dự
+              án.
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              <span>- Bước 4</span>: Các nhóm bắt đầu hoạt động dựa trên
+              timeline và kế hoạch đã đưa ra.
+            </p>
+          </li>
+        </ul>
+        <h3 className="project_chapter-h3">
+          2. Kế hoạch chi tiết thực hiện dự án
+        </h3>
+        <h4 className="project_chapter-h4">2.1. Tiến độ thực hiện</h4>
+        <TableContainer component={Paper}>
+          <Table
+            sx={{
+              minWidth: 650,
+              "& .MuiTableCell-head": {
+                border: "1px solid rgba(224, 224, 224, 1)",
+                fontWeight: "700",
+              },
+            }}
+            aria-label="simple table"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">THỜI GIAN</TableCell>
+                <TableCell align="center">MỤC TIÊU CẦN HOÀN THÀNH</TableCell>
+                <TableCell align="center">CÁC ĐẦU MỤC CÔNG VIỆC</TableCell>
+                <TableCell align="center">NGƯỜI PHỤ TRÁCH</TableCell>
+                <TableCell align="center">DỰ TRÙ KINH PHÍ</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {mission.map((item, index) => (
+                <TableRow
+                  key={index}
+                  sx={{
+                    "& td, & th": {
+                      border: "1px solid rgba(224, 224, 224, 1)",
+                      fontSize: "16px",
+                    },
+                  }}
+                >
+                  <TableCell component="th" scope="item" align="center">
+                    {item.time.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.goals.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.workList.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.responsibility.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.cost.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <h4 className="project_chapter-h4">
+          2.2. Chi tiết phân công nhiệm vụ theo từng cá nhân
+        </h4>
+        <TableContainer component={Paper}>
+          <Table
+            sx={{
+              minWidth: 650,
+              "& .MuiTableCell-head": {
+                border: "1px solid rgba(224, 224, 224, 1)",
+                fontWeight: "700",
+              },
+            }}
+            aria-label="simple table"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">STT</TableCell>
+                <TableCell align="center">MSSV</TableCell>
+                <TableCell align="center">HỌ VÀ TÊN</TableCell>
+                <TableCell align="center">VAI TRÒ</TableCell>
+                <TableCell align="center">CÔNG VIỆC</TableCell>
+                <TableCell align="center">GHI CHÚ</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {members.map((item, index) => (
+                <TableRow
+                  key={index}
+                  sx={{
+                    "& td, & th": {
+                      border: "1px solid rgba(224, 224, 224, 1)",
+                      fontSize: "16px",
+                    },
+                  }}
+                >
+                  <TableCell component="th" scope="item" align="center">
+                    {index + 1}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.mssv.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.fullname.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.responsibility.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.working.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                  <TableCell align="left">
+                    {item.note.split("/n").map((i) => (
+                      <p>{i}</p>
+                    ))}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <h1 className="project_chapter-h1">
+          CHƯƠNG III: KẾT QUẢ THỰC HIỆN DỰ ÁN
+        </h1>
+        <h2 className="project_chapter-h2">I. GIỚI THIỆU CHUNG </h2>
+        <p className="project_chapter-p">
+          Dự án “<span>Ảnh hưởng của thuốc lá điện tử đối với giới trẻ</span>”
+          được nhóm 1 – The Wisdom Vape (TWS) thuộc lớp học phần Kỹ năng công
+          dân toàn cầu 13 thực hiện với 8 thành viên đến từ 3 khoa: Công nghệ
+          thông tin, Tài chính ngân hàng, Quan hệ công chúng – truyền thông,
+          thuốc trường đại học Văn Lang. Dự án được lên kế hoạch và phát triển
+          theo tổng số 3 mục tiêu trên 17 mục tiêu phát triển bền vững của Liên
+          Hợp Quốc bao gồm:
+        </p>
+        <ul>
+          <li>
+            <p className="project_chapter-p">
+              + Mục tiêu số 3: Sức khỏe và có cuộc sống tốt.
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              + Mục tiêu số 4: Giáo dục có chất lượng.
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              + Mục tiêu só 11: Các thành phố và cộng đồng bền vững.
+            </p>
+          </li>
+        </ul>
+        <p className="project_chapter-p">
+          Dự án nhằm mang đến cho giới trẻ nói chung và các bạn sinh viên của
+          trường đại học Văn Lang nói riêng nhận biết về tác hại của thuốc lá
+          điện tử đối với sức khỏe, từ đó nâng cao nhận thức của các bạn về sự
+          nguy hiểm của thuốc lá điện tử. Qua đó giúp cho các bạn”Từ bỏ thuốc lá
+          điện tử trước khi nó bỏ bạn”, tạo ra một môi trường “Nói không với
+          khói thuốc”.
+        </p>
+        <p className="project_chapter-p">
+          Nhóm tạo ra 4 sản phẩm chính để tiếp cận và tuyên truyền đến các bạn
+          sinh viên trong và ngoài trường đại học Văn Lang:
+        </p>
+        <ul>
+          <li>
+            <p className="project_chapter-p">
+              <span>+ Fanpage facebook – “The Wisdom Vape”.</span>
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              <span>+ Website “The Wisdom Vape”.</span>
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              <span>+ Workshop “Thuốc lá điện tử ảnh hưởng đến giới trẻ”.</span>
+            </p>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              <span>+ Video. </span>
+            </p>
+          </li>
+        </ul>
+        <h2 className="project_chapter-h2">
+          II. Ý NGHĨA, ĐIỂM MỚI/SÁNG TẠO CỦA DỰ ÁN
+        </h2>
+        <h3 className="project_chapter-h3">1. Ý nghĩa của dự án:</h3>
+        <p className="project_chapter-p">
+          Dự án là sự kết tinh của toàn bộ tất cả thành viên nhóm, mỗi thành
+          viên đều có những vai trò không thể thay thế, mọi người đều cố gắng
+          hoàn thành tốt nhất có thể nhiệm vụ được giao. Không chỉ mang đến ý
+          nghĩa to lớn về nhận thức của thế hệ trẻ hiện nay phải biết quý trọng
+          và bảo vệ sức khỏe của mình, ngoài ra còn giúp giảm thiếu số lượng các
+          bạn sinh viên, giới trẻ sử dụng thuốc lá điện tử. Nhờ sự dạy bảo của
+          TS. Trần Nhật Phương – giảng viên bộ môn – và Trung tâm phát triển
+          năng lực sinh viên, đã cho chúng em trải nghiệm môn học này. Trong
+          suốt quá trình học tập và triển khai dự án, mỗi thành viên nhóm đã
+          trau dồi thêm những kinh nghiệm, có cơ hội thực hành và trải nghiệm
+          thêm những kỹ năng mới được học trong học phần như: kỹ năng giao tiếp,
+          kỹ năng quản lý thời gian, kỹ năng làm việc nhóm, kỹ năng thuyết
+          trình... giúp cho mỗi thành viên đều có những thu hoạch cá nhân giúp
+          bản thân tiến xa hơn trong công việc và cuộc sống.
+        </p>
+        <h3 className="project_chapter-h3">2. Điểm mới/ sáng tạo của dự án:</h3>
+        <p className="project_chapter-p">
+          Với 4 sản phẩm trong dự án đã tạo ra điểm đột phá và sáng tạo của dự
+          án. Làm tăng khả năng tuyên truyền đến nhiều đối tượng, đặc biệt là
+          các bạn sinh viên.
+        </p>
+        <p className="project_chapter-p">
+          Điểm nổi bật của dự án là chính các bạn sinh viên đã tự tìm hiểu, sàng
+          lọc thông tin để tạo ra 1 trang web riêng cho dự án, giúp đẩy mạnh khả
+          năng tuyên truyền cho dự án này.
+        </p>
+        <p className="project_chapter-p">
+          Một đóng góp không hề nhỏ và cũng là điểm nhấn cho dự án chính là sự
+          có mặt và chia sẻ của TS. Trần Nhật Phương tại buổi workshop “Thuốc lá
+          điện tử ảnh hưởng đến giới trẻ”. Thầy đã có những chia sẻ thú vị và
+          hấp dẫn về tác hại của thuốc lá điện tử đối với sức khỏe, qua đó đã
+          cho các bạn sinh viên có thêm những góc nhìn mới và nhận thức đúng
+          đắng về thuốc lá điện tử.
+        </p>
+        <h2 className="project_chapter-h2">
+          III. ĐỐI TƯỢNG THỤ HƯỞNG/ TÁC ĐỘNG:
+        </h2>
+        <p className="project_chapter-p">
+          Đối tượng thụ hưởng và nhận tác động lớn nhất của dự án là nhóm sinh
+          viên thực hiện dự án và các bạn sinh viên đã tham gia, theo dõi các
+          sản phẩm của dự án. Từ những gì các bạn tìm hiểu, đọc và nghe thì các
+          bạn trau dồi thêm cho mình những thông tin bổ ích, rèn luyện thêm
+          những kỹ năng cá nhân. Thêm vào đó là những kiến thức đúng đắn về
+          thuốc lá điện tử và tác hại của nó, giúp cho các bạn nhận thức được
+          mối nguy hiểm tiềm tàng của thuốc lá điện tử, qua đó biết cách phòng
+          tránh và bảo vệ bản thân trước hiện tượng xã hội mới này.
+        </p>
+        <h2 className="project_chapter-h2">VI. QUÁ TRÌNH THỰC HIỆN</h2>
+        <ul>
+          <li>
+            <p className="project_chapter-p">▪ Thuận lợi</p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  - Quá trình triển khai và thực hiện các hạng mục của dự án gần
+                  đúng với tiến độ đã đề ra.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Các thành viên trong nhóm chủ động hỗ trợ nhau trong công
+                  việc của từng Team.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Trong quá trình họp đưa ý tưởng hay góp ý, các thành viên
+                  tích cực sôi nổi tham gia và đưa ra ý kiến cho từng sản phẩm
+                  của dự án.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Trong quá trình diễn ra workshop, các thành viên đến đúng
+                  giờ, thực hiện công tác chuẩn bị chu toàn.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Tinh thần đoàn kết của nhóm cao.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Trong mọi quyết định về nội dung khi thực hiện dự án, luôn
+                  sử dụng phương thức bỏ phiếu, khi có 2/3 số thành viên nhóm
+                  đồng ý thì nội dung đó mới được thực hiện.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">▪ Khó khăn</p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  - Trong những buổi họp hàng tuần, có thành viên vẫn tham gia
+                  trễ. Thậm chí có 1 buổi họp đã được thông báo trước nhưng tới
+                  lúc diễn ra có 4 thành viên không tham gia cuộc họp, trong đó
+                  3 thành viên không tham gia được nhưng không báo vắng.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Kỷ luật của nhóm còn lỏng lẻo, nên còn tình trạng các thành
+                  viên chưa tôn trọng nhau trong khi làm việc và trong thời gian
+                  lên lớp.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Có tình trạng thành viên nhóm không sắp xếp được thời gian
+                  giữa công việc nhóm và công việc cá nhân, làm ảnh hưởng đến
+                  tiến độ dự án và bị dồn việc.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Khả năng kéo tương tác và thu hút của nhóm còn kém.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">▪ Bài học kinh nghiệm</p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  - Nên bình tĩnh xử lý các vấn đề xảy ra.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Chuẩn bị trước các phương án dự phòng, phòng khi có tình
+                  huống phát sinh.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Trưởng nhóm quản lý chặt hơn các thành viên của nhóm, tránh
+                  tình trạng không thông báo khi vắng họp hoặc trễ deadline.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Trưởng nhóm quan tâm, giúp đỡ và đưa ra giải pháp hỗ trợ cá
+                  thành viên nhóm gặp khó khăn.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Cần kết nối tinh thần của nhóm nhiều hơn để tăng năng suất
+                  và sự liên kết giữa các thành viên trong nhóm.
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Cần học và thực hành thêm kỹ năng giao tiếp để tương tác và
+                  giao lưu với môi trường xung quanh.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">
+              ▪ Những kỹ năng nhóm đã áp dụng được trong quá trình thực hiện dự
+              án
+            </p>
+            <TableContainer component={Paper}>
+              <Table
+                sx={{
+                  minWidth: 650,
+                  "& .MuiTableCell-head": {
+                    border: "1px solid rgba(224, 224, 224, 1)",
+                    fontWeight: "700",
+                  },
+                }}
+                aria-label="simple table"
+              >
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="center">STT</TableCell>
+                    <TableCell align="center">TÊN KỸ NĂNG</TableCell>
+                    <TableCell align="center">GIẢI THÍCH</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {skills.map((item, index) => (
+                    <TableRow
+                      key={index}
+                      sx={{
+                        "& td, & th": {
+                          border: "1px solid rgba(224, 224, 224, 1)",
+                          fontSize: "16px",
+                        },
+                      }}
+                    >
+                      <TableCell component="th" scope="item" align="center">
+                        {index + 1}
+                      </TableCell>
+                      <TableCell align="left">
+                        {item.name.split("/n").map((i) => (
+                          <p>{i}</p>
+                        ))}
+                      </TableCell>
+                      <TableCell align="left">
+                        {item.detail.split("/n").map((i) => (
+                          <p>{i}</p>
+                        ))}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </li>
+        </ul>
+        <h2 className="project_chapter-h2">V. KẾT QUẢ THU ĐƯỢC</h2>
+        <ul>
+          <li>
+            <p className="project_chapter-p">
+              ▪ Những kết quả thu được so với mục tiêu ban đầu của dự án
+            </p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  - Thống kê số lượng sinh viên tiếp cận qua các sản phẩm của dự
+                  án đạt hơn 200 lượt tham gia đến từ các bạn sinh viên, trong
+                  dó:
+                </p>
+                <ul>
+                  <li>
+                    <p className="project_chapter-p">
+                      + 42 lượt thích và 61 người theo dõi trên fanpage.
+                    </p>
+                    <img
+                      className="project_chapter-img"
+                      src={fanpage}
+                      alt="Hình ảnh trích ra từ Fanpage “Wisdome Vape”"
+                    />
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">
+                      + 167 người điền form khảo sát “Mức độ nhận biết về thuốc
+                      lá điện tử của sinh viên hiện nay”.
+                    </p>
+                    <img
+                      className="project_chapter-img"
+                      src={form}
+                      alt="Hình ảnh trích ra từ Fanpage “Wisdome Vape”"
+                    />
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">
+                      + Website do chính các bạn team web (thành viên nhóm) tự
+                      thiết kế:
+                    </p>
+                    <img
+                      className="project_chapter-img"
+                      src={website}
+                      alt="Hình ảnh trích ra từ Fanpage “Wisdome Vape”"
+                    />
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p className="project_chapter-p">▪ Truyền thông của dự án</p>
+            <ul>
+              <li>
+                <p className="project_chapter-p">
+                  - Clip giới thiệu dự án nhóm:
+                  <a href="https://youtu.be/plt3LtDCS7k" target="_blank">
+                    Xem tại đây
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Nội dung bài viết truyền thông giới thiệu dự án:
+                </p>
+                <ul>
+                  <li>
+                    <p className="project_chapter-p">
+                      📮Vape Wisdom Keeper xin chào mọi người!!!
+                    </p>
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">
+                      📌Chúng mình rất hân hạnh được gửi đến các bạn những thông
+                      điệp về tác hại của thuốc lá điện tử. Fanpage này ra đời
+                      với mục tiêu chia sẻ kiến thức và nhấn mạnh về các khía
+                      cạnh độc hại mà hút thuốc điện tử có thể gây ra cho sức
+                      khỏe con người.
+                    </p>
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">
+                      📩 Fanpage này cũng là nơi để các bạn thảo luận, đặt câu
+                      hỏi và chia sẻ quan điểm về vấn đề này. Chúng mình rất
+                      hoan nghênh mọi ý kiến đóng góp, vì chúng ta cùng nhau có
+                      thể làm cho thế giới hiểu rõ hơn về tác hại của thuốc lá
+                      điện tử.
+                    </p>
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">
+                      🔖Cảm ơn các bạn đã tham gia cùng chúng mình và hãy cùng
+                      chia sẻ thông điệp về tác hại của thuốc lá điện tử giúp
+                      lan toả đến cộng đồng nhé!
+                    </p>
+                  </li>
+
+                  <li>
+                    <p className="project_chapter-p">Trân trọng,</p>
+                  </li>
+                  <li>
+                    <p className="project_chapter-p">Vape Wisdom Keeper ❤️‍🔥</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Fanpage về dự án của nhóm:
+                  <a
+                    href="https://facebook.com/vapewisdomkeeper"
+                    target="_blank"
+                  >
+                    Xem tại đây
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p className="project_chapter-p">
+                  - Những sản phẩm khác liên quan đến truyền thông:
+                </p>
+                <ul>
+                  <li>
+                    <p className="project_chapter-p">
+                      + Website:{" "}
+                      <a
+                        href="https://vape-wisdom-keeper.onrender.com/"
+                        target="_blank"
+                      >
+                        Xem tại đây
+                      </a>{" "}
+                      (https://vape-wisdom-keeper.onrender.com/)
+                    </p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h2 className="project_chapter-h2">VI. NGUỒN TÀI LIỆU THAM KHẢO</h2>
+        <p className="project_chapter-p">
+          Ban biên tập Hello Bacsi, 02/06/2023. Thuốc lá điện tử là gì? Liệu nó
+          có an toàn như quảng cáo?. Thuốc lá điện tử là gì?:
+          <a
+            href="https://hellobacsi.com/thoi-quen-lanh-manh/bo-thuoc-la/thuoc-la-dien-tu/"
+            target="_blank"
+          >
+            https://hellobacsi.com/thoi-quen-lanh-manh/bo-thuoc-la/thuoc-la-dien-tu/
+          </a>
+        </p>
+        <p className="project_chapter-p">
+          Trương Vui, 23/05/2023. Xu hướng sử dụng thuốc lá điện tử ở Việt Nam
+          đang gia tăng. Một số thực trạng tại Việt Nam:
+          <a
+            href="https://baodantoc.vn/xu-huong-su-dung-thuoc-la-dien-tu-o-viet-nam-dang-gia-tang-1684821922844.htm"
+            target="_blank"
+          >
+            https://baodantoc.vn/xu-huong-su-dung-thuoc-la-dien-tu-o-viet-nam-dang-gia-tang-1684821922844.htm
+          </a>
+        </p>
       </Box>
+      <Box sx={{ height: "100px" }}></Box>
       <Modal
         open={open}
         onClose={handleClose}
